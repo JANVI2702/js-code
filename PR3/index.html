@@ -132,9 +132,16 @@
                     alt="Card image cap"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <a href="#" class="btn btn-primary">ORDER</a>
+                    <div class="item" data-name="cappuccino" data-price="25">
+                      <h5 class="card-title text-white">cappuccino</h5>
+                      <h5 class="text-white">$25</h5>
+                      <button
+                        onclick="addToCart('cappuccino')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <!-- card_2 -->
@@ -146,9 +153,20 @@
                     style="height: 18rem"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <a href="#" class="btn btn-primary">ORDER</a>
+                    <div
+                      class="item"
+                      data-name="Mojito blue-berry"
+                      data-price="25"
+                    >
+                      <h5 class="card-title text-white">Mojito blue-berry</h5>
+                      <h5 class="text-white">$25</h5>
+                      <button
+                        onclick="addToCart('Mojito blue-berry')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <!-- card_3 -->
@@ -159,9 +177,16 @@
                     alt="Card image cap"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <a href="#" class="btn btn-primary">ORDER</a>
+                    <div class="item" data-name="Mix-juice" data-price="25">
+                      <h5 class="card-title text-white">Mix-juice</h5>
+                      <h5 class="text-white">$25</h5>
+                      <button
+                        onclick="addToCart('Mix-juice')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -185,6 +210,15 @@
             break;
           case "Cream of Burnt Garlic Soup":
             price = 25;
+            break;
+          case "cappuccino":
+            price = 16;
+            break;
+          case "Mojito blue-berry":
+            price = 25;
+            break;
+          case "Mix-juice":
+            price = 30;
             break;
           default:
             price = 0;
