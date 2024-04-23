@@ -11,13 +11,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- navbar -->
@@ -50,9 +50,16 @@
                     alt="Card image cap"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <a href="#" class="btn btn-primary">ORDER</a>
+                    <div class="item" data-name="mojito" data-price="20">
+                      <h5 class="card-title text-white">Red Bull</h5>
+                      <h5 class="text-white">$20</h5>
+                      <button
+                        onclick="addToCart('redbull')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <!-- card_2 -->
@@ -64,18 +71,16 @@
                     style="height: 18rem"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <button class="addtocart">
-                      <div class="pretext">
-                        <i class="fas fa-cart-plus"></i>ORDER
-                      </div>
-                      <div class="pretext done">
-                        <div class="posttext">
-                          <i class="fas fa-check"></i>ADDED
-                        </div>
-                      </div>
-                    </button>
+                    <div class="item" data-name="juice" data-price="15">
+                      <h5 class="card-title text-white">juice</h5>
+                      <h5 class="text-white">$20</h5>
+                      <button
+                        onclick="addToCart('juice')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <!-- card_3 -->
@@ -86,13 +91,31 @@
                     alt="Card image cap"
                   />
                   <div class="card-body">
-                    <h5 class="card-title text-white">Red Bull Mojito</h5>
-                    <h5 class="text-white">$20</h5>
-                    <a href="#" class="btn btn-primary">ORDER</a>
+                    <div
+                      class="item"
+                      data-name="Cream of Burnt Garlic Soup"
+                      data-price="25"
+                    >
+                      <h5 class="card-title text-white">
+                        Cream of Burnt Garlic Soup
+                      </h5>
+                      <h5 class="text-white">$25</h5>
+                      <button
+                        onclick="addToCart('Cream of Burnt Garlic Soup')"
+                        class="btn btn-primary"
+                      >
+                        ORDER
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div class="card card_1" style="width: 18rem">
+                <!-- add items -->
+                <div class="card card_1 text-white" style="width: 18rem">
                   <h5 class="text-white">order chatch:</h5>
+                  <div id="cart">
+                    <ul id="cart-items"></ul>
+                    <h6>Total: $<span id="total">0</span></h6>
+                  </div>
                 </div>
               </div>
             </div>
@@ -147,7 +170,40 @@
         </div>
       </div>
     </header>
-    <script src="btn.js
-    "></script>
+    <script>
+      let cart = [];
+      let total = 0;
+
+      function addToCart(itemName) {
+        let price;
+        switch (itemName) {
+          case "redbull":
+            price = 20;
+            break;
+          case "juice":
+            price = 15;
+            break;
+          case "Cream of Burnt Garlic Soup":
+            price = 25;
+            break;
+          default:
+            price = 0;
+        }
+        cart.push({ name: itemName, price });
+        total += price;
+        updateCart();
+      }
+
+      function updateCart() {
+        let cartItem = document.getElementById("cart-items");
+        cartItem.innerHTML = "";
+        cart.forEach((item) => {
+          let li = document.createElement("li");
+          li.textContent = `${item.name} - $${item.price}`;
+          cartItem.appendChild(li);
+        });
+        document.getElementById("total").textContent = `${total}`;
+      }
+    </script>
   </body>
 </html>
