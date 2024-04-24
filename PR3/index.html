@@ -199,9 +199,9 @@
       let cart = [];
       let total = 0;
 
-      function addToCart(itemName) {
+      function addToCart(productname) {
         let price;
-        switch (itemName) {
+        switch (productname) {
           case "redbull":
             price = 20;
             break;
@@ -223,7 +223,7 @@
           default:
             price = 0;
         }
-        cart.push({ name: itemName, price });
+        cart.push({ name: productname, price });
         total += price;
         updateCart();
       }
